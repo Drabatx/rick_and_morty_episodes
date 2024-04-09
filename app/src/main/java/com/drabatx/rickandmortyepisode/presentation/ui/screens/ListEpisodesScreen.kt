@@ -6,9 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -29,14 +27,14 @@ import com.drabatx.rickandmortyepisode.presentation.ui.widgets.EmptyListBody
 import com.drabatx.rickandmortyepisode.presentation.viewmodel.EpisodesViewModel
 import com.drabatx.rickandmortyepisode.utils.Result
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListEpisodesScreen(viewModel: EpisodesViewModel, navController: NavController) {
     val episodesState by viewModel.episodesStateFlow.collectAsState(initial = Result.Loading)
     Scaffold(
         topBar = {
-            SearchBar(
-                query = "searchText"
+            ChildTopBar(
+                title = stringResource(id = R.string.characters_title),
+                navController = navController
             )
         },
     ){ innerPadding ->
