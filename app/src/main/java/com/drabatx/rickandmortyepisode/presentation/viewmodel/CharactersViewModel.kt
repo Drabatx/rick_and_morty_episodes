@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CharactersListViewModel @Inject constructor(private val getAllCharactersUseCase: GetAllCharactersUseCase) : ViewModel() {
+class CharactersViewModel @Inject constructor(private val getAllCharactersUseCase: GetAllCharactersUseCase) : ViewModel() {
 
     private val _characterMutableStateFlow =
         MutableStateFlow<Result<AllCharactersResponse>>(Result.Loading)

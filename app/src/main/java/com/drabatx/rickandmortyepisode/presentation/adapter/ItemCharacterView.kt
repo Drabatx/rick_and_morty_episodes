@@ -26,7 +26,7 @@ import com.drabatx.rickandmortyepisode.R
 import com.drabatx.rickandmortyepisode.presentation.model.CharacterItem
 
 @Composable
-fun ItemListView(character: CharacterItem) {
+fun ItemCharacterView(character: CharacterItem) {
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     Box(
@@ -86,7 +86,7 @@ fun ItemListView(character: CharacterItem) {
                 }
                 if (expanded) {
                     // Mostrar detalles adicionales cuando se expanda
-                    DetailsSection(character = character, modifier = Modifier.constrainAs(details) {
+                    DetailCharacterSection(character = character, modifier = Modifier.constrainAs(details) {
                         top.linkTo(button.bottom)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
@@ -98,7 +98,7 @@ fun ItemListView(character: CharacterItem) {
 }
 
 @Composable
-fun DetailsSection(character: CharacterItem, modifier: Modifier) {
+fun DetailCharacterSection(character: CharacterItem, modifier: Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()

@@ -47,7 +47,9 @@ fun MenuButtons(innerPadding: PaddingValues, navController: NavController) {
                 Text(text = stringResource(id = R.string.characters_menu))
             }
 
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = {
+                navController.navigate(AppScreens.EpisodeScreen.route)
+            }) {
                 Text(text = stringResource(id = R.string.episodes_menu))
             }
         }

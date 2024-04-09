@@ -3,7 +3,9 @@ package com.drabatx.rickandmortyepisode.di
 import com.drabatx.rickandmortyepisode.data.datasource.RemoteDataSource
 import com.drabatx.rickandmortyepisode.data.network.CharactersApiService
 import com.drabatx.rickandmortyepisode.domain.repository.AllCharactersRepository
+import com.drabatx.rickandmortyepisode.domain.repository.AllEpisodesRepository
 import com.drabatx.rickandmortyepisode.domain.repository.impl.AllCharacterRepositoryImpl
+import com.drabatx.rickandmortyepisode.domain.repository.impl.AllEpisodesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,4 +60,9 @@ object NetworkModule {
         return AllCharacterRepositoryImpl(remoteDataSource)
     }
 
+    @Provides
+    @Singleton
+    fun provideAllEpisodesRepository(remoteDataSource: RemoteDataSource): AllEpisodesRepository{
+        return AllEpisodesRepositoryImpl(remoteDataSource)
+    }
 }

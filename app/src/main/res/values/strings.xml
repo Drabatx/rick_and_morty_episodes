@@ -18,5 +18,6 @@
     <string name="episodes_menu">Episodios</string>
     <string name="menu_screen">menu_screen</string>
     <string name="characters_title">Personajes</string>
+    <string name="episodes_screen">episodes_screen</string>
 
 </resources>
