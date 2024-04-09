@@ -1,4 +1,4 @@
-package com.drabatx.rickandmortyepisode.ui.theme
+package com.drabatx.rickandmortyepisode.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

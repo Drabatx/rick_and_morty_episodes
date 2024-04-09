@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">RickAndMortyEpisode</string>
+
+    <string name="characters_screen">screen_list</string>
+    <string name="action_show_details">Ver detalles</string>
+    <string name="action_hide_details">Ocultar detalles</string>
+    <string name="text_status">Status: %1$s</string>
+    <string name="text_species">Species: %1$s</string>
+    <string name="text_type">Type: %1$s</string>
+    <string name="text_gender">Gender: %1$s</string>
+    <string name="text_origin">Origin: %1$s</string>
+    <string name="text_location">Location: %1$s</string>
+    <string name="example_icon">Example Icon</string>
+    <string name="text_error">Error</string>
+    <string name="text_accept">Aceptar</string>
+    <string name="text_empty_list">No existen elementos en la lista</string>
+    <string name="characters_menu">Personajes</string>
+    <string name="episodes_menu">Episodios</string>
+    <string name="menu_screen">menu_screen</string>
+    <string name="characters_title">Personajes</string>
+
 </resources>
