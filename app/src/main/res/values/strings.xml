@@ -19,5 +19,7 @@
     <string name="menu_screen">menu_screen</string>
     <string name="characters_title">Personajes</string>
     <string name="episodes_screen">episodes_screen</string>
+    <string name="placeholder_episode">Nombre del episodio</string>
+    <string name="action_hint_search">Buscar episodio</string>
 
 </resources>

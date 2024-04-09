@@ -33,7 +33,7 @@ fun ListCharactersScreen(viewModel: CharactersViewModel, navController: NavContr
 
     Scaffold(
         topBar = {
-            ChildTopBar(title = stringResource(id = R.string.characters_title), navController = navController)
+            ChildTopBar(title = stringResource(id = R.string.characters_title), navController = navController )
         },
     ) { innerPadding ->
         when (charactersState) {

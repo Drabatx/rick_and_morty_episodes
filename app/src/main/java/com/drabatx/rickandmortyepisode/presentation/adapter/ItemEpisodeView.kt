@@ -1,15 +1,9 @@
 package com.drabatx.rickandmortyepisode.presentation.adapter
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,19 +13,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import coil.compose.AsyncImage
-import com.drabatx.rickandmortyepisode.R
-import com.drabatx.rickandmortyepisode.presentation.model.CharacterItem
 import com.drabatx.rickandmortyepisode.presentation.model.EpisodeItem
 
 @Composable
@@ -58,7 +45,8 @@ fun ItemEpisodeView(episode: EpisodeItem) {
 
                 Text(
                     text = episode.episode,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 14.sp), fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 14.sp),
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .constrainAs(episodeText) {
                             top.linkTo(parent.top)
@@ -69,7 +57,8 @@ fun ItemEpisodeView(episode: EpisodeItem) {
 
                 Text(
                     text = episode.air_date,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp), fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .constrainAs(airdateText) {
                             top.linkTo(nameText.bottom)
@@ -82,7 +71,10 @@ fun ItemEpisodeView(episode: EpisodeItem) {
 
                 Text(
                     text = episode.name,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 24.sp, fontWeight = FontWeight.Bold),
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
                     modifier = Modifier
                         .constrainAs(nameText) {
                             top.linkTo(parent.top)

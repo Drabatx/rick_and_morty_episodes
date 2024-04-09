@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChildTopBar(title: String, navController: NavController) {
+fun ChildTopBar(title: String, navController: NavController, actions: @Composable (() -> Unit)? = null) {
     TopAppBar(
         title = {
             Text(
@@ -29,6 +29,9 @@ fun ChildTopBar(title: String, navController: NavController) {
                     contentDescription = "Localized description"
                 )
             }
+        },
+        actions = {
+            actions?.invoke()
         }
     )
 }

@@ -5,7 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -16,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.drabatx.rickandmortyepisode.R
 import com.drabatx.rickandmortyepisode.data.model.response.AllEpisodesResponse
-import com.drabatx.rickandmortyepisode.presentation.adapter.ItemCharacterView
 import com.drabatx.rickandmortyepisode.presentation.adapter.ItemEpisodeView
 import com.drabatx.rickandmortyepisode.presentation.dialogs.LoadingDialog
 import com.drabatx.rickandmortyepisode.presentation.dialogs.MessageDialog
@@ -24,20 +26,44 @@ import com.drabatx.rickandmortyepisode.presentation.mapper.EpisodeResponseToEpis
 import com.drabatx.rickandmortyepisode.presentation.model.EpisodeItem
 import com.drabatx.rickandmortyepisode.presentation.ui.widgets.ChildTopBar
 import com.drabatx.rickandmortyepisode.presentation.ui.widgets.EmptyListBody
+import com.drabatx.rickandmortyepisode.presentation.ui.widgets.SearchView
 import com.drabatx.rickandmortyepisode.presentation.viewmodel.EpisodesViewModel
 import com.drabatx.rickandmortyepisode.utils.Result
 
 @Composable
 fun ListEpisodesScreen(viewModel: EpisodesViewModel, navController: NavController) {
     val episodesState by viewModel.episodesStateFlow.collectAsState(initial = Result.Loading)
+    val searchText by viewModel.searchText.collectAsState()
+    val isSearching by viewModel.isSearching.collectAsState()
+    val episodesList by viewModel.episodesFilter.collectAsState()
+
     Scaffold(
         topBar = {
-            ChildTopBar(
-                title = stringResource(id = R.string.characters_title),
-                navController = navController
-            )
+            if (!isSearching) {
+                ChildTopBar(
+                    title = stringResource(id = R.string.episodes_menu),
+                    navController = navController,
+                    actions =
+                    {
+                        IconButton(onClick = { viewModel.onToogleSearch() }) {
+                            Icon(
+                                Icons.Filled.Search,
+                                contentDescription = stringResource(id = R.string.action_hint_search)
+                            )
+                        }
+                    }
+
+                )
+            } else {
+                SearchView(
+                    query = searchText,
+                    onQueryChange = { newQuery ->
+                        viewModel.onSearchTextChange(newQuery)
+                    }, viewModel = viewModel
+                )
+            }
         },
-    ){ innerPadding ->
+    ) { innerPadding ->
         when (episodesState) {
             is Result.Loading -> {
                 LoadingDialog(isLoading = true)
@@ -55,7 +81,10 @@ fun ListEpisodesScreen(viewModel: EpisodesViewModel, navController: NavControlle
                     }
                 } else {
                     viewModel.saveEpisodes(episodes)
-                    ListEpisodesBody(innerPadding = innerPadding, episodes)
+                    ListEpisodesBody(
+                        innerPadding = innerPadding,
+                        episodesList
+                    )
                 }
             }
 
@@ -73,7 +102,7 @@ fun ListEpisodesScreen(viewModel: EpisodesViewModel, navController: NavControlle
         }
     }
 
-    if (viewModel.characters.isEmpty()) {
+    if (viewModel.episodes.isEmpty()) {
         LaunchedEffect(Unit) {
             viewModel.getAllCharacters()
         }
@@ -92,3 +121,4 @@ fun ListEpisodesBody(
         }
     }
 }
+
