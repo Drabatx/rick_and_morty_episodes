@@ -16,7 +16,19 @@ Este proyecto usa Android Jetpack Compose para las vistas de personajes y episod
 
 ## Screenshots
 
-Video
+Imagenes
+
+![Opciones](/img/img_1.png)
+
+
+![Personajes](/img/img_2.png)
+
+
+![Detalles](/img/img_3.png)
+
+
+
+## Video
 
 ![Video_1](https://github.com/Drabatx/rick_and_morty_episodes/blob/master/img/video_1.mp4)
 
